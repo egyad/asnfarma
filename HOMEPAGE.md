@@ -2,21 +2,6 @@
 
 > Aplikasi belajar CPNS Farmasi #1 untuk lolos SKD & SKB
 
----
-
-## Hero Section
-
-**Headline:**
-> Lolos CPNS Farmasi, Dimulai dari Sini.
-
-**Subheadline:**
-> Belajar terstruktur, tryout realistis, dan pantau progresmu setiap hari — semua dalam satu aplikasi gratis.
-
-**CTA Buttons:**
-- Download di App Store
-- Download di Google Play
-
-**Visual:** Screenshot hero screen / mockup perangkat smartphone menampilkan dashboard aplikasi.
 
 ---
 
@@ -155,6 +140,6 @@ Tidak ada yang bisa menjamin kelulusan, tapi kami menjamin kamu belajar dengan c
 
 ## Kontak & Dukungan
 
-- Email: support@asnfarma.id
+- Email: egyadhitama@gmail.com
 - Instagram: @asnfarma
-- Website: asnfarma.id
+
