@@ -1,133 +1,160 @@
-# Homepage (Beranda) — DashboardScreen
+# ASNFarma — Landing Page
 
-**File:** `src/screens/DashboardScreen.tsx`  
-**Route:** `Beranda` tab (bottom tab navigator)
-
----
-
-## Overview
-
-The homepage is the first screen users land on. It gives a full picture of study progress, offers a quick resume button, and keeps the exam countdown front and center. All data comes from Zustand / AsyncStorage — no network call is made on this screen.
+> Aplikasi belajar CPNS Farmasi #1 untuk lolos SKD & SKB
 
 ---
 
-## Layout (top to bottom)
+## Hero Section
 
-### 1. Greeting Bar
+**Headline:**
+> Lolos CPNS Farmasi, Dimulai dari Sini.
 
-```
-[Avatar]  Selamat pagi,       [Formasi Chip]
-          Nama Pengguna
-```
+**Subheadline:**
+> Belajar terstruktur, tryout realistis, dan pantau progresmu setiap hari — semua dalam satu aplikasi gratis.
 
-- **Avatar** — initials-based circle generated from `s.nama`.
-- **Greeting text** — time-based: Pagi / Siang / Sore / Malam.
-- **Formasi Chip** — shows short label + icon of the active formasi (e.g. "CPNS", "PPPK"). Sourced from `FORMASI[s.formasi]`.
+**CTA Buttons:**
+- Download di App Store
+- Download di Google Play
 
----
-
-### 2. Overall Progress Card
-
-- Circular `ProgressRing` (72 px, stroke 8) showing `overallProgress(s.progress, f)` as a %.
-- Copy changes:
-  - `0%` → "Belum ada bab selesai. Yuk, mulai belajar dari bab pertama!"
-  - `>0%` → "X dari Y bab selesai. Terus konsisten, kamu pasti bisa."
+**Visual:** Screenshot hero screen / mockup perangkat smartphone menampilkan dashboard aplikasi.
 
 ---
 
-### 3. Resume / Welcome Banner
+## Tentang Aplikasi
 
-Shown only when there is recent activity or the user is brand new. Mutually exclusive states:
+ASNFarma adalah aplikasi mobile belajar CPNS khusus bidang Farmasi. Dirancang untuk mahasiswa farmasi dan fresh graduate yang ingin lulus Seleksi Kompetensi Dasar (SKD) dan Seleksi Kompetensi Bidang (SKB) Farmasi dengan cara yang efektif, terstruktur, dan menyenangkan.
 
-| State | Condition | Label | Action |
+**Platform:** iOS & Android  
+**Harga:** Gratis (konten premium tersedia)  
+**Bahasa:** Bahasa Indonesia
+
+---
+
+## Fitur Utama
+
+### Materi Belajar Lengkap
+Materi disusun per modul dan bab, mencakup tiga ujian utama CPNS:
+- **TKD** — Tes Kompetensi Dasar (TWK, TIU, TKP)
+- **TKP** — Tes Karakteristik Pribadi
+- **SKB Farmasi** — Kompetensi Bidang sesuai formasi yang kamu pilih
+
+Setiap bab dilengkapi teks bacaan, contoh soal, dan post-test mini.
+
+### Tryout Simulasi CAT
+Rasakan pengalaman ujian yang nyata dengan simulasi CAT (Computer Assisted Test):
+- Timer otomatis seperti ujian sesungguhnya
+- Soal acak dari bank soal yang terus diperbarui
+- Hasil instan dengan pembahasan per soal
+- Riwayat tryout untuk melacak perkembangan skor
+
+### Pantau Progress Belajar
+Dashboard personal yang selalu update:
+- Persentase penyelesaian per modul
+- Resume belajar — lanjut dari bab terakhir dalam satu klik
+- Hitung mundur menuju hari ujian
+- Skor tryout terakhir langsung terlihat
+
+### Pilih Formasimu
+Konten SKB disesuaikan otomatis dengan formasi yang kamu pilih:
+- Apoteker Ahli
+- Tenaga Teknis Kefarmasian D3
+- Analis / Pengawas Farmasi
+
+### Belajar Kapan Saja, Tanpa Login
+Tidak perlu akun. Langsung buka, langsung belajar. Progress tersimpan otomatis di perangkatmu.
+
+---
+
+## Kenapa ASNFarma?
+
+| | ASNFarma | Buku Cetak | Aplikasi Umum |
 |---|---|---|---|
-| **Lanjutkan Belajar** | `s.lastActivity` exists | "LANJUTKAN BELAJAR" + chapter title + progress bar | Navigate to `Reader` for that chapter |
-| **Mulai Perjalananmu** | `overall === 0` and no `lastActivity` / `lastTryout` | "MULAI PERJALANANMU" + first TKD chapter | Navigate to first TKD chapter |
-| *(hidden)* | Progress > 0 but `lastActivity` cleared | — | Nothing shown |
-
-Background color:
-- Lanjutkan = `t.formasiColor` (formasi accent)
-- Mulai = `t.brand` (primary brand color)
+| Konten SKB khusus Farmasi | Ya | Jarang | Tidak |
+| Tryout simulasi CAT | Ya | Tidak | Sebagian |
+| Progress personal | Ya | Tidak | Sebagian |
+| Tanpa login | Ya | — | Jarang |
+| Update konten berkala | Ya | Tidak | Bervariasi |
+| Gratis digunakan | Ya | Tidak | Sebagian |
 
 ---
 
-### 4. Module Cards (MODUL BELAJAR)
+## Untuk Siapa?
 
-Three tappable cards stacked vertically:
+- Mahasiswa farmasi tingkat akhir yang mempersiapkan diri masuk ASN
+- Fresh graduate S1 Farmasi / D3 Teknis Kefarmasian
+- Peserta CPNS yang sudah pernah gagal dan ingin mencoba lagi
+- Siapapun yang ingin memahami materi SKD & SKB Farmasi secara mendalam
 
-| Module | Icon | Color |
+---
+
+## Modul yang Tersedia
+
+### TKD — Tes Kompetensi Dasar
+Materi dasar SKD yang wajib dikuasai semua peserta CPNS:
+- Wawasan Kebangsaan (TWK)
+- Intelegensi Umum (TIU)
+- Karakteristik Pribadi (TKP)
+
+### TKP — Karakteristik Pribadi
+Pendekatan khusus untuk memahami pola soal TKP dan strategi menjawab yang menghasilkan skor maksimal.
+
+### SKB Farmasi
+Materi kompetensi bidang yang disesuaikan per formasi, meliputi:
+- Farmakologi & Farmakognosi
+- Farmasetika & Teknologi Sediaan
+- Undang-Undang Kefarmasian
+- Pelayanan Kefarmasian (Klinik & Komunitas)
+
+---
+
+## Cara Kerja
+
+1. **Pilih formasi** — Tentukan formasimu agar konten SKB langsung relevan.
+2. **Baca materi** — Pelajari bab per bab dengan pembahasan yang ringkas dan jelas.
+3. **Kerjakan post-test** — Uji pemahaman di akhir setiap bab.
+4. **Tryout simulasi** — Latihan dengan kondisi ujian sesungguhnya.
+5. **Pantau progress** — Lihat seberapa jauh kamu sudah maju dan fokus pada kelemahan.
+
+---
+
+## Harga & Paket
+
+| Paket | Harga | Konten |
 |---|---|---|
-| TKD — Kompetensi Dasar | `school` | `t.brand` |
-| TKP — Karakteristik Pribadi | `heart-circle` | `t.brand` |
-| SKB — Kompetensi Bidang | Formasi-specific icon | `t.formasiColor` |
+| **Gratis** | Rp 0 | Akses modul TKD + beberapa bab SKB |
+| **Premium** | Sekali bayar | Semua modul TKD, TKP, SKB lengkap + semua soal tryout |
 
-Each card shows:
-- Module label + full name
-- `ProgressBar` with % completion
-- `moduleProgress(s.progress, key, formasi)` value
-
-Tapping navigates to `Materi` screen with `{ module }` param.
-
-> **Memoisation:** the `mods` array is wrapped in `useMemo` with deps `[s.progress, f, t]` so module cards re-render only when progress, formasi, or theme changes.
+> Pembayaran aman melalui App Store / Google Play.
 
 ---
 
-### 5. Exam Countdown Card
+## Pertanyaan Umum (FAQ)
 
-- Shows days remaining (`daysUntil(s.examDate)`) in large bold text.
-- Special copy when `days === 0`: "Hari ujian telah tiba!"
-- Tapping opens `ExamDateSheet` (bottom sheet with a `DateTimePicker`).
+**Apakah aplikasi ini perlu internet?**
+Materi yang sudah diunduh bisa dibaca offline. Sinkronisasi konten terbaru membutuhkan koneksi internet.
 
-**ExamDateSheet behaviour:**
-- Android: renders a native date-picker dialog directly (no Sheet wrapper).
-- iOS: renders `DateTimePicker` in spinner mode inside a `Sheet`.
-- Minimum selectable date is tomorrow.
-- Saves ISO date string to `s.setExamDate()` on confirm.
+**Apakah progress saya tersimpan?**
+Ya. Progress tersimpan otomatis di perangkat tanpa perlu login atau akun.
 
----
+**Apakah konten SKB sesuai dengan formasi saya?**
+Ya. Setelah kamu memilih formasi (Apoteker Ahli, D3 Teknis Kefarmasian, atau Analis/Pengawas), materi dan soal SKB akan otomatis menyesuaikan.
 
-### 6. Last Tryout Card
-
-Shown only when `s.lastTryout` exists.
-
-- Mini `ProgressRing` (52 px) coloured green (`t.success`) if passed, red (`t.danger`) if not.
-- Score display: `score / max`
-- Status `Chip`: "Lolos PG" or "Di bawah PG"
-- Date of the last tryout.
-- Tapping navigates to the `Tryout` tab.
+**Apakah ada jaminan lulus?**
+Tidak ada yang bisa menjamin kelulusan, tapi kami menjamin kamu belajar dengan cara yang paling efektif dan efisien.
 
 ---
 
-## State & Store Dependencies
+## Download Sekarang
 
-| Store field | Used for |
-|---|---|
-| `s.nama` | Avatar initials + greeting name |
-| `s.formasi` | Module colors, chapter list filtering |
-| `s.progress` | `overallProgress`, `moduleProgress`, `chapterPct` |
-| `s.lastActivity` | Resume banner (module, chapter no, title, id) |
-| `s.lastTryout` | Last tryout card (score, max, passed, date) |
-| `s.examDate` | Countdown days |
+> Gratis. Tanpa login. Mulai belajar hari ini.
 
-No Firebase / network calls — all reads from Zustand (backed by AsyncStorage).
+- **App Store** — [Link App Store]
+- **Google Play** — [Link Google Play]
 
 ---
 
-## Navigation Actions
+## Kontak & Dukungan
 
-| Target | Trigger |
-|---|---|
-| `Reader` (module, no, id, title) | Resume banner tap / welcome banner tap |
-| `Materi` (module) | Any module card tap |
-| `ExamDateSheet` (local modal) | Countdown card tap |
-| `Tryout` tab | Last tryout card tap |
-
----
-
-## Related Files
-
-- [src/screens/DashboardScreen.tsx](../src/screens/DashboardScreen.tsx) — screen implementation
-- [src/store/useAppStore.ts](../src/store/useAppStore.ts) — `overallProgress`, `moduleProgress`, `daysUntil`, store state
-- [src/data/content.ts](../src/data/content.ts) — `getChapters`, `chapterId`
-- [src/theme/tokens.ts](../src/theme/tokens.ts) — `FORMASI`, `RADIUS`
-- [src/components/index.ts](../src/components/index.ts) — `Card`, `Chip`, `Avatar`, `ProgressBar`, `ProgressRing`, `Sheet`
+- Email: support@asnfarma.id
+- Instagram: @asnfarma
+- Website: asnfarma.id
